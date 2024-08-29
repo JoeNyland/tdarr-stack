@@ -1,0 +1,40 @@
+services:
+  server:
+    image: ghcr.io/haveagitgat/tdarr
+    container_name: tdarr
+    restart: unless-stopped
+    environment:
+      TZ: Europe/London
+      PUID: 991 # media user
+      PGID: 994 # media group
+      UMASK_SET: 002
+    ports:
+      - 8265:8265
+    labels:
+      traefik.enable: true
+      traefik.http.routers.tdarr.rule: Host(`tdarr`)
+    volumes:
+      - /containers/tdarr/configs:/app/configs
+      - /containers/tdarr/logs:/app/logs
+      - /containers/tdarr/server:/app/server
+      - /tank/media/movies:/tank/media/movies
+      - /tank/media/tv:/tank/media/tv
+  node:
+    image: ghcr.io/haveagitgat/tdarr_node
+    container_name: tdarr-node
+    restart: unless-stopped
+    environment:
+      TZ: Europe/London
+      PUID: 991 # media user
+      PGID: 994 # media group
+      UMASK_SET: 002
+      nodeName: NAS
+      serverIP: server
+    volumes:
+      - /containers/tdarr/configs:/app/configs
+      - /containers/tdarr/logs:/app/logs
+      - /containers/tdarr/work:/work # Should be excluded from snapshots
+      - /tank/media/movies:/tank/media/movies
+      - /tank/media/tv:/tank/media/tv
+    devices:
+      - /dev/dri:/dev/dri
