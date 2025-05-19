@@ -11,6 +11,8 @@ services:
       PUID: 991 # media user
       PGID: 994 # media group
       UMASK_SET: 002
+      serverIP: "::"
+      serverBindIP: true
     labels:
       traefik.enable: true
       traefik.http.routers.tdarr.rule: Host(`tdarr`)
@@ -43,5 +45,7 @@ services:
       - /dev/dri:/dev/dri
 
 networks:
+  default:
+    enable_ipv6: true
   proxy:
     external: true
