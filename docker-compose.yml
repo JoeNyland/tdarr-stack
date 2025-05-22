@@ -26,6 +26,7 @@ services:
       - /containers/tdarr/work:/work # "Transcode Cache" - Should be excluded from snapshots
       - /tank/media/movies:/tank/media/movies
       - /tank/media/tv:/tank/media/tv
+      - /tank/media/xxx/videos:/tank/media/xxx/videos
   tdarr-node:
     image: ghcr.io/haveagitgat/tdarr_node
     container_name: tdarr-node
@@ -43,6 +44,7 @@ services:
       - /containers/tdarr/work:/work # "Transcode Cache" - Should be excluded from snapshots
       - /tank/media/movies:/tank/media/movies
       - /tank/media/tv:/tank/media/tv
+      - /tank/media/xxx/videos:/tank/media/xxx/videos
     devices:
       - /dev/dri:/dev/dri
 
