@@ -6,8 +6,6 @@ services:
     networks:
       default:
       proxy:
-    ports:
-      - "8266:8266" # Allow external nodes to connect
     environment:
       TZ: Europe/London
       PUID: 991 # media user
