@@ -21,7 +21,7 @@ services:
       - /containers/tdarr/configs:/app/configs
       - /containers/tdarr/logs:/app/logs
       - /containers/tdarr/server:/app/server
-      - /tmp/tdarr/work:/work # "Transcode Cache" - Should be excluded from snapshots
+      - /tmp/tdarr:/work # "Transcode Cache" - Should be excluded from snapshots
       - /tank/media/movies:/tank/media/movies
       - /tank/media/tv:/tank/media/tv
       - /tank/media/xxx/videos:/tank/media/xxx/videos
@@ -39,7 +39,7 @@ services:
     volumes:
       - /containers/tdarr/configs:/app/configs
       - /containers/tdarr/logs:/app/logs
-      - /tmp/tdarr/work:/work # "Transcode Cache" - Should be excluded from snapshots
+      - /tmp/tdarr:/work # "Transcode Cache" - Should be excluded from snapshots
       - /tank/media/movies:/tank/media/movies
       - /tank/media/tv:/tank/media/tv
       - /tank/media/xxx/videos:/tank/media/xxx/videos
