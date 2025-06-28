@@ -51,5 +51,6 @@ services:
 networks:
   default:
     enable_ipv6: true
+    name: tdarr
   proxy:
     external: true
