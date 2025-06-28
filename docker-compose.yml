@@ -6,6 +6,7 @@ services:
     networks:
       default:
       proxy:
+      metrics:
     environment:
       TZ: Europe/London
       PUID: 991 # media user
@@ -52,5 +53,7 @@ networks:
   default:
     enable_ipv6: true
     name: tdarr
+  metrics:
+    external: true
   proxy:
     external: true
